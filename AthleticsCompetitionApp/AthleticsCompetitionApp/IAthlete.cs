@@ -1,4 +1,6 @@
-﻿namespace AthleticsCompetitionApp
+﻿using static AthleticsCompetitionApp.AthleteBase;
+
+namespace AthleticsCompetitionApp
 {
     public interface IAthlete
     {
@@ -14,6 +16,13 @@
 
         public void AddShotPutResult(string result);
 
+        event Athlete100mRunResultAddedDelegate Athlete100mRunResultAdded;
+       
+        event AthleteLongJumpResultAddedDelegate AthleteLongJumpResultAdded;
+
+        event AthleteShotPutResultAddedDelegate AthleteShotPutResultAdded;
+
+        event AthleteResultsSavedToFileDelegate AthleteResultsSavedToFile;
         AthleteResults GetAthleteResults();
     }
 }

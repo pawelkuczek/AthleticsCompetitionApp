@@ -6,9 +6,9 @@ namespace AthleticsCompetitionApp
     public class AthleteResults
     {
         public int Score { get; set; }
-        public double Athlete100mRunResult { get; set; }
-        public double AthleteLongJumpResult { get; set; }
-        public double AthleteShotPutResult { get; set; }
+        public double Athlete100mRunResult { get; protected internal set; }
+        public double AthleteLongJumpResult { get; protected internal set; }
+        public double AthleteShotPutResult { get; protected internal set; }
 
         public char AthleteClassification
         {

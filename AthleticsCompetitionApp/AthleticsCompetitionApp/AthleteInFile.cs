@@ -20,6 +20,7 @@
                 writer.WriteLine("---------------------");
 
             }
+            this.ShotEventSaveAthleteResultsToFile();
         } 
     }
 }
