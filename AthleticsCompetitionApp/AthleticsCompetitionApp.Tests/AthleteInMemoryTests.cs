@@ -1,6 +1,6 @@
 namespace AthleticsCompetitionApp.Tests
 {
-    public class Tests
+    public class AthleteInMemoryTests
     {
 
         [Test]
@@ -89,6 +89,29 @@ namespace AthleticsCompetitionApp.Tests
             Assert.AreEqual(10, pointValue);
             Assert.AreEqual(21.51, resultShotPut2);
             Assert.AreEqual(6, pointValue2);
+
+        }
+
+        [Test]
+        public void WhenGetAthleteResultsCalled_ShouldReturnCorrectValues()
+        {
+            //arrange
+            var athlete = new AthleteInMemory("Usain", "Bolt");
+           
+            //act
+            athlete.Add100meterRunResult(9.58);
+            athlete.AddLongJumpResult(8.17);
+            athlete.AddShotPutResult(15.78);
+            var athleteResults = athlete.GetAthleteResults();
+          
+
+
+            //assert
+            Assert.AreEqual(9.58, athleteResults.Athlete100mRunResult);
+            Assert.AreEqual(8.17, athleteResults.AthleteLongJumpResult);
+            Assert.AreEqual(15.78, athleteResults.AthleteShotPutResult);
+            Assert.AreEqual(24, athleteResults.Score);
+            Assert.AreEqual('B', athleteResults.AthleteClassification);
 
         }
     }

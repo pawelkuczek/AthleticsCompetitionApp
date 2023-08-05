@@ -7,9 +7,9 @@ namespace AthleticsCompetitionApp
         public AthleteInMemory(string name, string surname) : base(name, surname) { }
 
         private List<int> athleteScores = new List<int>();
-        private double result100meterRun;
-        private double resultLongJump;
-        private double resultShotPut;
+        private double result100meterRun {  get; set; }
+        private double resultLongJump { get; set; }
+        private double resultShotPut { get; set; }
         public override void Add100meterRunResult(double result)
         {
             if (result < 10.2)
@@ -144,6 +144,21 @@ namespace AthleticsCompetitionApp
             {
                 throw new Exception("Invalid shot put result");
             }
+        }
+
+        public override AthleteResults GetAthleteResults()
+        {
+            var athleteResults = new AthleteResults();
+            athleteResults.Athlete100mRunResult += this.result100meterRun;
+            athleteResults.AthleteLongJumpResult += this.resultLongJump;
+            athleteResults.AthleteShotPutResult += this.resultShotPut;  
+
+            foreach(var number in this.athleteScores)
+            {
+                athleteResults.Score += number;
+            }
+
+            return athleteResults;
         }
     }
 }

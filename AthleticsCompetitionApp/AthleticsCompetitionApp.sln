@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AthleticsCompetitionApp", "AthleticsCompetitionApp\AthleticsCompetitionApp.csproj", "{FFF7496D-DCDD-4265-A58C-E0043DFA4FB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AthleticsCompetitionApp.Tests", "AthleticsCompetitionApp.Tests\AthleticsCompetitionApp.Tests.csproj", "{E67D4D19-B931-4A3A-92A1-4CB06A33D652}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFF7496D-DCDD-4265-A58C-E0043DFA4FB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFF7496D-DCDD-4265-A58C-E0043DFA4FB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFF7496D-DCDD-4265-A58C-E0043DFA4FB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFF7496D-DCDD-4265-A58C-E0043DFA4FB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E67D4D19-B931-4A3A-92A1-4CB06A33D652}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E67D4D19-B931-4A3A-92A1-4CB06A33D652}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E67D4D19-B931-4A3A-92A1-4CB06A33D652}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E67D4D19-B931-4A3A-92A1-4CB06A33D652}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {46EB172C-4D74-43FA-9D15-96AA8833F203}
+	EndGlobalSection
+EndGlobal

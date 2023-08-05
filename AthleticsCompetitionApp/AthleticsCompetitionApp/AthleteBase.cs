@@ -23,5 +23,7 @@
         public abstract void AddShotPutResult(double result);
 
         public abstract void AddShotPutResult(string result);
+
+        public abstract AthleteResults GetAthleteResults();
     }
 }

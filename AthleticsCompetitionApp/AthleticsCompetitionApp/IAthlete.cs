@@ -14,5 +14,6 @@
 
         public void AddShotPutResult(string result);
 
+        AthleteResults GetAthleteResults();
     }
 }
