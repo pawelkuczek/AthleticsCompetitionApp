@@ -88,7 +88,7 @@ namespace AthleticsCompetitionApp.Tests
             Assert.AreEqual(23.56, resultShotPut);
             Assert.AreEqual(10, pointValue);
             Assert.AreEqual(21.51, resultShotPut2);
-            Assert.AreEqual(6, pointValue2);
+            Assert.AreEqual(8, pointValue2);
 
         }
 
@@ -110,8 +110,7 @@ namespace AthleticsCompetitionApp.Tests
             Assert.AreEqual(9.58, athleteResults.Athlete100mRunResult);
             Assert.AreEqual(8.17, athleteResults.AthleteLongJumpResult);
             Assert.AreEqual(15.78, athleteResults.AthleteShotPutResult);
-            Assert.AreEqual(24, athleteResults.Score);
-            Assert.AreEqual('B', athleteResults.AthleteClassification);
+            Assert.AreEqual(21, athleteResults.Score);
 
         }
     }

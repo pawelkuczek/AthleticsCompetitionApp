@@ -11,49 +11,59 @@ namespace AthleticsCompetitionApp
         public override event AthleteLongJumpResultAddedDelegate AthleteLongJumpResultAdded;
 
         public override event AthleteShotPutResultAddedDelegate AthleteShotPutResultAdded;
-       
+
         public override event AthleteResultsSavedToFileDelegate AthleteResultsSavedToFile;
         public AthleteInMemory(string name, string surname) : base(name, surname) { }
 
-        private List<int> athleteScores = new List<int>();
+        private List<double> athleteScores = new List<double>();
         private double result100meterRun { get; set; }
         private double resultLongJump { get; set; }
         private double resultShotPut { get; set; }
         public override void Add100meterRunResult(double result)
         {
-            if (result < 10.2)
+            //switch (result)
+            //{
+            //    case >= 9.4 and <= 9.99:
+            //        this.athleteScores.Add(10);
+            //        break;
+            //    case >= 10 and < 10.5:
+            //        this.athleteScores.Add(9);
+            //        break;
+            //    case >= 10.5 and < 10.9:
+            //        this.athleteScores.Add(8);
+            //        break;
+            //    case >= 10.9 and < 11.3:
+            //        this.athleteScores.Add(7);
+            //        break;
+            //    case >= 11.3 and < 12:
+            //        this.athleteScores.Add(6);
+            //        break;
+            //    case >= 12 and < 13:
+            //        this.athleteScores.Add(5);
+            //        break;
+            //    case >= 13 and < 14:
+            //        this.athleteScores.Add(4);
+            //        break;
+            //    case >= 14 and < 15:
+            //        this.athleteScores.Add(3);
+            //        break;
+            //    case >= 15 and < 16:
+            //        this.athleteScores.Add(2);
+            //        break;
+            //    case >= 16 and <= 20:
+            //        this.athleteScores.Add(1);
+            //        break;
+            //    default:
+            //        throw new Exception("Nieprawidłowa wartość. Podaj prawidłową wartość np. 12,25. Akceptowany przedział: 9,4 - 20");
+            //}
+            if (result >= 9.4 && result <= 20)
             {
-                this.athleteScores.Add(10);
-                this.result100meterRun = result;
-                ShotEventAthlete100mRunResultAdded();
-            }
-            else if (result >= 10.2 && result < 10.5)
-            {
-                this.athleteScores.Add(9);
-                this.result100meterRun = result;
-                ShotEventAthlete100mRunResultAdded();
-            }
-            else if (result >= 10.5 && result < 10.9)
-            {
-                this.athleteScores.Add(8);
-                this.result100meterRun = result;
-                ShotEventAthlete100mRunResultAdded();
-            }
-            else if (result >= 10.9 && result < 11.3)
-            {
-                this.athleteScores.Add(7);
-                this.result100meterRun = result;
-                ShotEventAthlete100mRunResultAdded();
-            }
-            else if (result >= 11.3)
-            {
-                this.athleteScores.Add(6);
-                this.result100meterRun = result;
+                this.result100meterRun = 20 - result;
                 ShotEventAthlete100mRunResultAdded();
             }
             else
             {
-                throw new Exception("Invalid 100m run result");
+                throw new Exception("Nieprawidłowa wartość. Podaj prawidłową wartość np. 12,25. Akceptowany przedział: 9,4 - 20");
             }
         }
 
@@ -65,47 +75,25 @@ namespace AthleticsCompetitionApp
             }
             else
             {
-                throw new Exception("Invalid 100m run result");
+                throw new Exception("Nieprawidłowa wartość. Podaj prawidłową wartość np. 12,25. Akceptowany przedział: 9,4 - 20");
             }
         }
 
         public override void AddLongJumpResult(double result)
         {
-            if (result >= 8.6)
+            if (result >= 2 && result <= 9.5)
             {
-                this.athleteScores.Add(10);
-                this.resultLongJump = result;
-                ShotEventAthleteLongJumpResultAdded();
-            }
-            else if (result < 8.6 && result >= 8.3)
-            {
-                this.athleteScores.Add(9);
-                this.resultLongJump = result;
-                ShotEventAthleteLongJumpResultAdded();
-            }
-            else if (result < 8.3 && result >= 8)
-            {
-                this.athleteScores.Add(8);
-                this.resultLongJump = result;
-                ShotEventAthleteLongJumpResultAdded();
-            }
-            else if (result < 8 && result >= 7.7)
-            {
-                this.athleteScores.Add(7);
-                this.resultLongJump = result;
-                ShotEventAthleteLongJumpResultAdded();
-            }
-            else if (result < 7.7)
-            {
-                this.athleteScores.Add(6);
+                this.athleteScores.Add(result);
                 this.resultLongJump = result;
                 ShotEventAthleteLongJumpResultAdded();
             }
             else
             {
-                throw new Exception("Invalid long jump result");
+                throw new Exception("Nieprawidłowa wartość. Podaj prawidłową wartość np. 7,55. Akceptowany przedział: 2 - 9,5");
             }
         }
+
+
 
         public override void AddLongJumpResult(string result)
         {
@@ -115,46 +103,21 @@ namespace AthleticsCompetitionApp
             }
             else
             {
-                throw new Exception("Invalid long jump result");
+                throw new Exception("Nieprawidłowa wartość. Podaj prawidłową wartość np. 7,55. Akceptowany przedział: 2 - 9,5");
             }
         }
 
         public override void AddShotPutResult(double result)
         {
-
-            if (result >= 23)
+            if (result >= 6 && result <= 24.5)
             {
-                this.athleteScores.Add(10);
-                this.resultShotPut = result;
-                ShotEventAthleteShotPutResultAdded();
-            }
-            else if (result < 23 && result >= 22.7)
-            {
-                this.athleteScores.Add(9);
-                this.resultShotPut = result;
-                ShotEventAthleteShotPutResultAdded();
-            }
-            else if (result < 22.7 && result >= 22.4)
-            {
-                this.athleteScores.Add(8);
-                this.resultShotPut = result;
-                ShotEventAthleteShotPutResultAdded();
-            }
-            else if (result < 22.4 && result >= 22.1)
-            {
-                this.athleteScores.Add(7);
-                this.resultShotPut = result;
-                ShotEventAthleteShotPutResultAdded();
-            }
-            else if (result < 22.1)
-            {
-                this.athleteScores.Add(6);
+                this.athleteScores.Add(result);
                 this.resultShotPut = result;
                 ShotEventAthleteShotPutResultAdded();
             }
             else
             {
-                throw new Exception("Invalid shot put result");
+                throw new Exception("Nieprawidłowa wartość. Podaj prawidłową wartość np. 15,40. Akceptowany przedział: 6 - 24,5");
             }
         }
 
@@ -166,7 +129,7 @@ namespace AthleticsCompetitionApp
             }
             else
             {
-                throw new Exception("Invalid shot put result");
+                throw new Exception("Nieprawidłowa wartość pchnięcia kulą. Podaj prawidłową wartość np. 16,33");
             }
         }
 

@@ -7,10 +7,24 @@ Console.WriteLine("------------------------");
 Console.WriteLine("Wpisanie w każdym momencie komendy q lub Q spowoduje zakończenie programu");
 Console.WriteLine("Jeśli nie chcesz dodawać więcej zawodników, to po komunikacie: 'Zapisano wyniki zawodnika do pliku' również wpisz do konsoli q lub Q aby wyjść.");
 
-List<AthleteInMemory> athletes = new List<AthleteInMemory>();
-
+List<AthleteInFile> athletes = new List<AthleteInFile>();
+Console.WriteLine("------------------------");
+Console.WriteLine("Podaj datę zawodów np. 06.08.2023");
+var inputDate = Console.ReadLine();
+if (inputDate == "q" || inputDate == "Q")
+{
+    goto LoopEnd;
+}
+Console.WriteLine("------------------------");
+Console.WriteLine("Podaj miejsce odbywania się zawodów np. Wrocław");
+var inputPlace = Console.ReadLine();
+if (inputPlace == "q" || inputPlace == "Q")
+{
+    goto LoopEnd;
+}
 while (true)
 {
+    
     Console.WriteLine("------------------------");
     Console.WriteLine("Podaj imię zawodnika: ");
     var inputName = Console.ReadLine();
@@ -30,7 +44,7 @@ while (true)
     athlete.Athlete100mRunResultAdded += Athlete100mRunResultAdded;
     athlete.AthleteLongJumpResultAdded += AthleteLongJumpResultAdded;
     athlete.AthleteShotPutResultAdded += AthleteShotPutResultAdded;
-    athlete.AthleteResultsSavedToFile += AthleteResultsSavedToFile;
+    athlete.AthleteResultsSavedToFile += AthletesResultsSavedToFile;
 
 
     while (true)
@@ -50,7 +64,7 @@ while (true)
         }
         catch (Exception e)
         {
-            Console.WriteLine($"Exception catched: {e.Message}");
+            Console.WriteLine(e.Message);
         }
     }
 
@@ -71,7 +85,7 @@ while (true)
         }
         catch (Exception e)
         {
-            Console.WriteLine($"Exception catched: {e.Message}");
+            Console.WriteLine(e.Message);
         }
     }
 
@@ -91,11 +105,11 @@ while (true)
         }
         catch (Exception e)
         {
-            Console.WriteLine($"Exception catched: {e.Message}");
+            Console.WriteLine(e.Message);
         }
     }
 
-    athlete.SaveAthleteResultsToFile();
+    //athlete.SaveAthleteResultsToFile();
     athletes.Add(athlete);
 
 }
@@ -110,30 +124,15 @@ else
     Console.WriteLine("Zakończono działanie programu.");
 }
 
-
 if (athletes.Count > 0)
 {
 
-
-    athletes.Sort((a1, a2) => a1.GetAthleteResults().Score.CompareTo(a2.GetAthleteResults().Score));
-    athletes.Reverse();
-    var index = 1;
-    Console.WriteLine("Wyniki Zawodów lekkoatletycznych");
-    Console.WriteLine("-------------------------------");
-
-
-    {
-        foreach (var athlete in athletes)
-        {
-            Console.WriteLine($"{index}. {athlete.Name} {athlete.Surname} - {athlete.GetAthleteResults().Score} pkt");
-            Console.WriteLine("-------------------------------");
-            index++;
-        }
-    }
-
+    AthleteInFile.SaveAthletesScoreboardToFile(athletes);
 }
+
+
 void Athlete100mRunResultAdded(object sender, EventArgs args)
-{
+{;
     Console.WriteLine("Dodano wynik zawodnika na 100m");
 }
 
@@ -147,9 +146,69 @@ void AthleteShotPutResultAdded(object sender, EventArgs args)
     Console.WriteLine("Dodano wynik zawodnika w pchnięciu kulą");
 }
 
-void AthleteResultsSavedToFile(object sender, EventArgs args)
+void AthletesResultsSavedToFile(object sender, EventArgs args)
 {
-    Console.WriteLine("Zapisano wyniki zawodnika do pliku");
+    Console.WriteLine("Zapisano wyniki zawodników do pliku");
 }
 
+//void ShowAthletesScoreboard()
+//{
+//    athletes.Sort((a1, a2) => a1.GetAthleteResults().Athlete100mRunResult.CompareTo(a2.GetAthleteResults().Athlete100mRunResult));
+//    athletes[0].GetAthleteResults().EventsWon += 1;
+//    athletes.Sort((a1, a2) => a1.GetAthleteResults().AthleteLongJumpResult.CompareTo(a2.GetAthleteResults().AthleteLongJumpResult));
+//    athletes.Reverse();
+//    athletes[0].GetAthleteResults().EventsWon += 1;
+//    athletes.Sort((a1, a2) => a1.GetAthleteResults().AthleteShotPutResult.CompareTo(a2.GetAthleteResults().AthleteShotPutResult));
+//    athletes.Reverse();
+//    athletes[0].GetAthleteResults().EventsWon += 1;
 
+//    foreach (var athlete in athletes)
+//    {
+//        athlete.GetAthleteResults().EventsWon += athlete.GetAthleteResults().Score;
+//    }
+//    athletes.Sort((a1, a2) => a1.GetAthleteResults().Score.CompareTo(a2.GetAthleteResults().Score));
+//    athletes.Reverse();
+//    var index = 1;
+//    Console.WriteLine("Wyniki Zawodów lekkoatletycznych");
+//    Console.WriteLine("-------------------------------");
+//    foreach (var athlete in athletes)
+//    {
+//        Console.WriteLine($"{index}. {athlete.Name} {athlete.Surname} - {athlete.GetAthleteResults().Score} pkt, wygrane konkurencje - {athlete.GetAthleteResults().EventsWon}");
+//        Console.WriteLine("-------------------------------");
+//        index++;
+//    }
+//}
+
+void SaveAthletesScoreboardToFile()
+{
+    athletes.Sort((a1, a2) => a1.GetAthleteResults().Athlete100mRunResult.CompareTo(a2.GetAthleteResults().Athlete100mRunResult));
+    athletes[0].GetAthleteResults().EventsWon += 1;
+    athletes.Sort((a1, a2) => a1.GetAthleteResults().AthleteLongJumpResult.CompareTo(a2.GetAthleteResults().AthleteLongJumpResult));
+    athletes.Reverse();
+    athletes[0].GetAthleteResults().EventsWon += 1;
+    athletes.Sort((a1, a2) => a1.GetAthleteResults().AthleteShotPutResult.CompareTo(a2.GetAthleteResults().AthleteShotPutResult));
+    athletes.Reverse();
+    athletes[0].GetAthleteResults().EventsWon += 1;
+
+    foreach (var athlete in athletes)
+    {
+        athlete.GetAthleteResults().EventsWon += athlete.GetAthleteResults().Score;
+    }
+    athletes.Sort((a1, a2) => a1.GetAthleteResults().Score.CompareTo(a2.GetAthleteResults().Score));
+    athletes.Reverse();
+    var index = 1;
+    const string fileName = "athletes_results.txt";
+    using (var writer = File.AppendText(fileName))
+    {
+        writer.WriteLine("Wyniki Zawodów lekkoatletycznych");
+        Console.WriteLine("-------------------------------");
+        foreach (var athlete in athletes)
+        {
+            writer.WriteLine($"Miejsce {index}: {athlete.Name} {athlete.Surname} - {athlete.GetAthleteResults().Score} pkt, wygrane konkurencje - {athlete.GetAthleteResults().EventsWon}");
+            writer.WriteLine($"[ Bieg na 100m - {athlete.GetAthleteResults().Athlete100mRunResult}s, Skok w dal - {athlete.GetAthleteResults().AthleteLongJumpResult}m, Pchnięcie kulą - {athlete.GetAthleteResults().AthleteShotPutResult}m]");
+            writer.WriteLine("-------------------------------");
+            index++;
+        }
+    }
+  
+}
