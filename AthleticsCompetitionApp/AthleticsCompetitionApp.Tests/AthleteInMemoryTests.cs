@@ -10,9 +10,6 @@ namespace AthleticsCompetitionApp.Tests
             var athlete = new AthleteInMemory("Usain", "Bolt");
             var athlete2 = new AthleteInMemory("Asafa", "Powell");
 
-
-
-
             //act
 
             athlete.Add100meterRunResult(9.58);
@@ -27,9 +24,9 @@ namespace AthleticsCompetitionApp.Tests
 
             //assert
             Assert.AreEqual(9.58, result100m);
-            Assert.AreEqual(10, pointValue);
+            Assert.AreEqual(10.42, pointValue);
             Assert.AreEqual(10.72, result100m2);
-            Assert.AreEqual(8, pointValue2);
+            Assert.AreEqual(9.28, pointValue2);
 
         }
 
@@ -39,9 +36,6 @@ namespace AthleticsCompetitionApp.Tests
             //arrange
             var athlete = new AthleteInMemory("Mike", "Powell");
             var athlete2 = new AthleteInMemory("Carl", "Lewis");
-
-
-
 
             //act
 
@@ -54,12 +48,11 @@ namespace AthleticsCompetitionApp.Tests
             var resultLongJump2 = athlete2Results.AthleteLongJumpResult;
             var pointValue2 = athlete2Results.Score;
 
-
             //assert
             Assert.AreEqual(8.95, resultLongJump);
-            Assert.AreEqual(10, pointValue);
+            Assert.AreEqual(8.95, pointValue);
             Assert.AreEqual(7.82, resultLongJump2);
-            Assert.AreEqual(7, pointValue2);
+            Assert.AreEqual(7.82, pointValue2);
 
         }
 
@@ -69,10 +62,6 @@ namespace AthleticsCompetitionApp.Tests
             //arrange
             var athlete = new AthleteInMemory("Ryan", "Crouser");
             var athlete2 = new AthleteInMemory("Tomasz", "Majewski");
-
-
-
-
 
             //act
             athlete.AddShotPutResult(23.56);
@@ -86,9 +75,9 @@ namespace AthleticsCompetitionApp.Tests
 
             //assert
             Assert.AreEqual(23.56, resultShotPut);
-            Assert.AreEqual(10, pointValue);
+            Assert.AreEqual(23.56, pointValue);
             Assert.AreEqual(21.51, resultShotPut2);
-            Assert.AreEqual(8, pointValue2);
+            Assert.AreEqual(21.51, pointValue2);
 
         }
 
@@ -97,20 +86,18 @@ namespace AthleticsCompetitionApp.Tests
         {
             //arrange
             var athlete = new AthleteInMemory("Usain", "Bolt");
-           
+
             //act
             athlete.Add100meterRunResult(9.58);
             athlete.AddLongJumpResult(8.17);
             athlete.AddShotPutResult(15.78);
             var athleteResults = athlete.GetAthleteResults();
-          
-
 
             //assert
             Assert.AreEqual(9.58, athleteResults.Athlete100mRunResult);
             Assert.AreEqual(8.17, athleteResults.AthleteLongJumpResult);
             Assert.AreEqual(15.78, athleteResults.AthleteShotPutResult);
-            Assert.AreEqual(21, athleteResults.Score);
+            Assert.AreEqual(34.37, athleteResults.Score);
 
         }
     }

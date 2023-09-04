@@ -14,10 +14,10 @@ namespace AthleticsCompetitionApp
         public AthleteResults()
         {
             this.Score = 0;
+            this.EventsWon = 0; 
             this.Athlete100mRunResult = 0;
             this.AthleteLongJumpResult = 0;
             this.AthleteShotPutResult = 0;
-            this.EventsWon = 0;
         }
     }
 }

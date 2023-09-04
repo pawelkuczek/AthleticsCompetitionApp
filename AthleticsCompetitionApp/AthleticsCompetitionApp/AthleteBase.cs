@@ -1,22 +1,12 @@
 ﻿namespace AthleticsCompetitionApp
 {
     public abstract class AthleteBase : IAthlete
+       
     {
-        public delegate void Athlete100mRunResultAddedDelegate(object sender, EventArgs args);
+        public delegate void NewAthleteCreatedDelegate(object sender, EventArgs args);
 
-        public abstract event Athlete100mRunResultAddedDelegate Athlete100mRunResultAdded;
-
-        public delegate void AthleteLongJumpResultAddedDelegate(object sender, EventArgs args);
-
-        public abstract event AthleteLongJumpResultAddedDelegate AthleteLongJumpResultAdded;
-
-        public delegate void AthleteShotPutResultAddedDelegate(object sender, EventArgs args);
-
-        public abstract event AthleteShotPutResultAddedDelegate AthleteShotPutResultAdded;
-
-        public delegate void AthleteResultsSavedToFileDelegate(object sender, EventArgs args);
-
-        public abstract event AthleteResultsSavedToFileDelegate AthleteResultsSavedToFile;
+        public abstract event NewAthleteCreatedDelegate NewAthleteCreated;
+        
         public AthleteBase(string name, string surname)
         {
             this.Name = name;
@@ -39,7 +29,7 @@
 
         public abstract void AddShotPutResult(string result);
 
-
+        public abstract void ShowAthletesScoreboardFromMemory(List<AthleteInMemory> athletes, string date, string place);
 
         public abstract AthleteResults GetAthleteResults();
     }

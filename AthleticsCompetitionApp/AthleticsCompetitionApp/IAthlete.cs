@@ -16,13 +16,9 @@ namespace AthleticsCompetitionApp
 
         public void AddShotPutResult(string result);
 
-        event Athlete100mRunResultAddedDelegate Athlete100mRunResultAdded;
-       
-        event AthleteLongJumpResultAddedDelegate AthleteLongJumpResultAdded;
+        public void ShowAthletesScoreboardFromMemory(List<AthleteInMemory> athletes, string date, string place);
 
-        event AthleteShotPutResultAddedDelegate AthleteShotPutResultAdded;
-
-        event AthleteResultsSavedToFileDelegate AthleteResultsSavedToFile;
+        event NewAthleteCreatedDelegate NewAthleteCreated;
         AthleteResults GetAthleteResults();
     }
 }
